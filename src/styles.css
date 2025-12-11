@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+/* ==== FIX DURO PARA DayPicker (v9) CON TABLA ==== */
+.rdp table{ width:100% !important; border-collapse:collapse !important; table-layout:fixed !important; }
+.rdp thead, .rdp tbody { display: table-header-group !important; display: revert !important; }
+.rdp tr     { display: table-row !important; }
+.rdp th,
+.rdp td     { display: table-cell !important; padding: 0 !important; text-align:center !important; vertical-align: middle !important; }
+
+.rdp .rdp-day { 
+  width: 2.25rem !important; 
+  height: 2.25rem !important; 
+  display: grid !important; 
+  place-items: center !important; 
+  border-radius: .5rem !important;
+  margin: 0 auto !important;
+}
+.rdp .rdp-day:hover { background: rgba(0,0,0,.04); }
+.dark .rdp .rdp-day:hover { background: rgba(255,255,255,.06); }
+
+.rdp .rdp-caption_label{ font-weight:600 !important; }
+.rdp .rdp-head_cell{ font-weight:600 !important; height: 2.25rem !important; }
+
+

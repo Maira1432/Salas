@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Sistema de reservas FYCO</title>
+    <script>
+  (function () {
+    try {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      var root = document.documentElement;
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+
+      function apply(theme) {
+        // theme: 'light' | 'dark' | 'system' | null (null = seguir sistema)
+        var systemDark = mq.matches;
+        var useDark =
+          theme === 'dark' ||
+          (theme === 'system' && systemDark) ||
+          (!theme && systemDark);
+
+        root.classList.toggle('dark', useDark);
+        // ayuda a inputs/scrollbars nativos
+        root.style.colorScheme = useDark ? 'dark' : 'light';
+        if (metaTheme) metaTheme.setAttribute('content', useDark ? '#0b0b0d' : '#ffffff');
+      }
+
+      // 1) Aplicar al cargar (preferencia de usuario si existe; si no, sistema)
+      var saved = localStorage.getItem('theme'); // 'light' | 'dark' | 'system' | null
+      apply(saved);
+
+      // 2) Escuchar cambios del sistema solo si seguimos 'system' (o sin preferencia)
+      function handleSystemChange() {
+        var savedNow = localStorage.getItem('theme');
+        if (!savedNow || savedNow === 'system') apply(savedNow);
+      }
+      if (mq.addEventListener) mq.addEventListener('change', handleSystemChange);
+      else mq.addListener(handleSystemChange); // Safari viejo
+
+      // 3) Exponer setter global para tu Toggle (opcional)
+      //    window.__setTheme('light'|'dark'|'system')
+      window.__setTheme = function (next) {
+        if (next) localStorage.setItem('theme', next);
+        else localStorage.removeItem('theme'); // null => seguir sistema
+        apply(next);
+      };
+    } catch (e) {}
+  })();
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
