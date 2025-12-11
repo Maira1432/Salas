@@ -25,11 +25,11 @@ const extractRoomName = (evt) => {
 };
 
 const INITIAL_ROOMS = [
-  { id: '1', nombre: 'Círculo de Sabios I', email: 'circulo.sabios1@fycotelecom.com', capacidad: 8 },
-  { id: '2', nombre: 'Círculo de Sabios II', email: 'circulo.sabios2@fycotelecom.com', capacidad: 6 },
-  { id: '3', nombre: 'Círculo de Sabios III', email: 'circulo.sabios3@fycotelecom.com', capacidad: 4 },
+  { id: '1', nombre: 'Círculo de Sabios I', email: 'circulo.sabios1@fycotelecom.com', capacidad: 5 },
+  { id: '2', nombre: 'Círculo de Sabios II', email: 'circulo.sabios2@fycotelecom.com', capacidad: 5 },
+  { id: '3', nombre: 'Círculo de Sabios III', email: 'circulo.sabios3@fycotelecom.com', capacidad: 5 },
   { id: '4', nombre: 'Consejo de la Tribu', email: 'consejo.tribu@fycotelecom.com', capacidad: 12 },
-  { id: '5', nombre: 'Plaza de Conexiones', email: 'plaza.conexiones@fycotelecom.com', capacidad: 20 },
+  { id: '5', nombre: 'Plaza de Conexiones', email: 'plaza.conexiones@fycotelecom.com', capacidad: 6 },
 ];
 
 export const ReservationsProvider = ({ children }) => {
